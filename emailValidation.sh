@@ -6,16 +6,11 @@ shopt -s extglob
 
 read -p "Enter Email address to validate :  " email
 
-emailRegx="^([a-z]{1,}[0-9a-zA-Z]{0,}[@]{1}[a-z]{1,}[.]{1}[a-z]{2,})" # To handle Mandatory part
+finalRegx="^([a-z]{1,}[0-9a-zA-Z]{0,}([._+-]{0,1}[a-z0-9A-Z]){0,}[@][a-zA-Z0-9]{1,}[.][a-zA-Z]{2,}[.]{0,1}[a-zA-Z]{2})$" # Final Regx to handle 2-char  maximum
 
-optionalRegx="^([a-z]{1,}[0-9a-zA-Z]{0,}([._+-]{0,1}[a-z0-9A-Z]){0,}[@][a-zA-Z0-9]{1,}[.][a-z]{2,})$" # To handle optional part
-
-if [[ $email =~ $emailRegx ]]
+if [[ $email =~ $finalRegx ]]
 then
-		echo "$email is valid"
-elif [[ $email =~ $optionalRegx ]]
-then
-		echo "$email is valid email address with optional part"
+		echo "$email is valid email address"
 else
 		echo "$email is not valid email address"
 fi
