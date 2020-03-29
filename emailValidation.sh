@@ -6,7 +6,7 @@ shopt -s extglob
 
 read -p "Enter Email address to validate :  " email
 
-emailPattern="^([a-z]{3,}[0-9 a-z])"  # 3-Mandatory parts
+emailPattern="^([a-z]{1,}[0-9a-z]{0,}[@]{1}[a-z]{1,})"  # Mandatory @ parts
 
 if [[ $email =~ $emailPattern ]]
 then
